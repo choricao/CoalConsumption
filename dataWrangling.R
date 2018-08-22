@@ -17,3 +17,16 @@ summary(coal_long)
 
 coal_long$coal_consumption <- as.numeric(coal_long$coal_consumption)
 summary(coal_long)
+
+unique(coal_long$region)
+
+noncountries <- c("North America", "Central & South America", "Antarctica", "Europe", "Eurasia",
+                  "Middle East", "Africa", "Asia & Oceania", "World")
+
+matches <- which(!is.na(match(coal_long$region, noncountries)))
+
+coal_country <- coal_long[-matches, ]
+coal_region <- coal_long[matches, ]
+
+unique(coal_country$region)
+unique(coal_region$region)
