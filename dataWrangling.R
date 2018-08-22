@@ -1,5 +1,6 @@
 library(tidyverse)
 
+# Read in coal dataset
 coal <- read_csv('http://594442.youcanlearnit.net/coal.csv')
 glimpse(coal)
 
@@ -9,6 +10,7 @@ glimpse(coal)
 colnames(coal)[1] <- 'region'
 summary(coal)
 
+# Convert coal dataset from long to wide
 coal_long <- gather(coal, 'year', 'coal_consumption', -region)
 glimpse(coal_long)
 
@@ -18,6 +20,7 @@ summary(coal_long)
 coal_long$coal_consumption <- as.numeric(coal_long$coal_consumption)
 summary(coal_long)
 
+# Segment coal dataset
 unique(coal_long$region)
 
 noncountries <- c("North America", "Central & South America", "Antarctica", "Europe", "Eurasia",
@@ -30,3 +33,6 @@ coal_region <- coal_long[matches, ]
 
 unique(coal_country$region)
 unique(coal_region$region)
+
+# Visuaize coal dataset
+
