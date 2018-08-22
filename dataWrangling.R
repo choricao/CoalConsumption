@@ -35,4 +35,8 @@ unique(coal_country$region)
 unique(coal_region$region)
 
 # Visuaize coal dataset
+ggplot(data = coal_region, mapping = aes(x = year, y = coal_consumption)) +
+  geom_point()
 
+ggplot(data = coal_region, mapping = aes(x = year, y = coal_consumption)) +
+  geom_line(mapping = aes(color = region))
